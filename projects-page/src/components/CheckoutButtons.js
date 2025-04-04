@@ -11,7 +11,7 @@ const CheckoutButtons = ({ set, hardwareCounts, handleCheckout, joined, projectI
 
   const apiCall = async (type) => {
     try {
-      const res = await fetch(`http://localhost:5000/${type}?projectId=${projectId}&qty=${quantity}`);
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/${type}?projectId=${projectId}&qty=${quantity}`);
       const data = await res.json();
       setStatusMessage(data.message); // <-- update status message
       handleCheckout(set, type === "checkout" ? quantity : -quantity);

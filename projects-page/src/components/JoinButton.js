@@ -5,7 +5,7 @@ const JoinButton = ({ joined, setJoined, projectId, setStatusMessage }) => {
   const handleToggleJoin = async () => {
     const endpoint = joined ? "leave" : "join";
     try {
-      const res = await fetch(`http://localhost:5000/${endpoint}?projectId=${projectId}`);
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/${endpoint}?projectId=${projectId}`);
       const data = await res.json();
       setStatusMessage(data.message); // <-- update status message
       setJoined(!joined);
